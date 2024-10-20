@@ -30,11 +30,12 @@ type akamaiRequest struct {
 }
 
 type pixelRequest struct {
-	ApiKey    string `json:"apiKey"`
-	Ua        string `json:"ua"`
-	PageURL   string `json:"pageUrl"`
-	ScriptVal string `json:"scriptVal"`
-	PixelID   string `json:"pixelId"`
+	ApiKey       string `json:"apiKey"`
+	Ua           string `json:"ua"`
+	PageURL      string `json:"pageUrl"`
+	ScriptVal    string `json:"scriptVal"`
+	PixelID      string `json:"pixelId"`
+	PixelVersion string `json:"pixelVersion"`
 }
 
 type AkamaiResponse struct {

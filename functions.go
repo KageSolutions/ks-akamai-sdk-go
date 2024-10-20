@@ -49,6 +49,10 @@ func (p *AkamaiSdkInstance) UpdatePixelId(pixelId string) {
 	p.pixelRequest.PixelID = pixelId
 }
 
+func (p *AkamaiSdkInstance) UpdatePixelVersion(pixelVersion string) {
+	p.pixelRequest.PixelVersion = pixelVersion
+}
+
 func structToReader(data interface{}) (io.Reader, error) {
 	jsonData, err := json.Marshal(data)
 	if err != nil {
@@ -148,6 +152,16 @@ func (t *AkamaiSdkInstance) ParseAkamaiBody(body string) error {
 	} else {
 		if bazaCheck {
 			t.ContainsPixel = true
+			doc, _ := goquery.NewDocumentFromReader(strings.NewReader(body))
+			doc.Find("script").Each(func(i int, s *goquery.Selection) {
+				src, exists := s.Attr("src")
+				if exists {
+					if strings.Contains(src, "akam/13/") {
+						t.UpdatePixelVersion(strings.Split(src, "/")[len(strings.Split(src, "/"))-1])
+					}
+				}
+			})
+
 			pixelId := pixelValueRegex.FindString(body)
 			Id := strings.Split(pixelId, "=")[1]
 			t.UpdatePixelId(strings.ReplaceAll(Id, "\"", ""))
