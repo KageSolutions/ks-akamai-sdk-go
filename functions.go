@@ -16,11 +16,11 @@ import (
 )
 
 // init new sdk instance
-func NewPxSdkInstance(apiKey, version, website string, verbose bool) *AkamaiSdkInstance {
+func NewPxSdkInstance(apiKey, version, website string, firstFeature, verbose bool) *AkamaiSdkInstance {
 	return &AkamaiSdkInstance{
 		akamaiVersion:  version,
 		dynamicRequest: dynamicRequest{ApiKey: apiKey},
-		sensorRequest:  akamaiRequest{ApiKey: apiKey},
+		sensorRequest:  akamaiRequest{ApiKey: apiKey, First: firstFeature},
 		pixelRequest:   pixelRequest{ApiKey: apiKey},
 		WebsiteUrl:     website,
 		verbose:        verbose,
@@ -39,6 +39,14 @@ func (p *AkamaiSdkInstance) UpdatePageUrl(pageURL string) {
 func (p *AkamaiSdkInstance) UpdateUserAgent(userAgent string) {
 	p.sensorRequest.Ua = userAgent
 	p.pixelRequest.Ua = userAgent
+}
+
+func (p *AkamaiSdkInstance) UpdateAbck(abck string) {
+	p.sensorRequest.Abck = abck
+}
+
+func (p *AkamaiSdkInstance) UpdateBmsz(bmsz string) {
+	p.sensorRequest.BmSz = bmsz
 }
 
 func (p *AkamaiSdkInstance) UpdatePixelScriptValue(scriptVal string) {
