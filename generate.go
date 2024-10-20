@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 
 	"github.com/KakashiHatake324/mockjs"
@@ -16,6 +17,9 @@ func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 	requestData, err := structToReader(r.dynamicRequest)
 	if err != nil {
 		return err
+	}
+	if r.verbose {
+		log.Println("DYNAMIC REQUEST DATA:", r.dynamicRequest)
 	}
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/v%s", DynamicApiUrl, r.akamaiVersion), requestData)
 	if err != nil {
@@ -33,6 +37,9 @@ func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return err
+	}
+	if r.verbose {
+		log.Println("DYNAMIC REQUEST RESPONSE:", string(body))
 	}
 	var responseData = make(map[string]interface{})
 	err = json.Unmarshal(body, &responseData)
@@ -56,6 +63,9 @@ func (r *AkamaiSdkInstance) RequestSensor() (*AkamaiResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	if r.verbose {
+		log.Println("SENSOR REQUEST DATA:", r.sensorRequest)
+	}
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/sensor/v%s", ApiUrl, r.akamaiVersion), requestData)
 	if err != nil {
 		return nil, err
@@ -72,6 +82,9 @@ func (r *AkamaiSdkInstance) RequestSensor() (*AkamaiResponse, error) {
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
+	}
+	if r.verbose {
+		log.Println("SENSOR REQUEST RESPONSE:", string(body))
 	}
 	var responseData AkamaiResponse
 	err = json.Unmarshal(body, &responseData)
@@ -93,6 +106,9 @@ func (r *AkamaiSdkInstance) RequestPixel() (*AkamaiResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	if r.verbose {
+		log.Println("PIXEL REQUEST DATA:", r.pixelRequest)
+	}
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/pixel", ApiUrl), requestData)
 	if err != nil {
 		return nil, err
@@ -109,6 +125,9 @@ func (r *AkamaiSdkInstance) RequestPixel() (*AkamaiResponse, error) {
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
+	}
+	if r.verbose {
+		log.Println("PIXEL REQUEST RESPONSE:", string(body))
 	}
 	var responseData AkamaiResponse
 	err = json.Unmarshal(body, &responseData)

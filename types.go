@@ -12,6 +12,7 @@ type AkamaiSdkInstance struct {
 	PixelData     string
 	PixelVersion  string
 	ContainsPixel bool
+	verbose       bool
 }
 
 type dynamicRequest struct {

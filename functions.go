@@ -16,13 +16,14 @@ import (
 )
 
 // init new sdk instance
-func NewPxSdkInstance(apiKey, version, website string) *AkamaiSdkInstance {
+func NewPxSdkInstance(apiKey, version, website string, verbose bool) *AkamaiSdkInstance {
 	return &AkamaiSdkInstance{
 		akamaiVersion:  version,
 		dynamicRequest: dynamicRequest{ApiKey: apiKey},
 		sensorRequest:  akamaiRequest{ApiKey: apiKey},
 		pixelRequest:   pixelRequest{ApiKey: apiKey},
 		WebsiteUrl:     website,
+		verbose:        verbose,
 	}
 }
 
