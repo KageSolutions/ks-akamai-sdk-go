@@ -10,6 +10,7 @@ type AkamaiSdkInstance struct {
 	AkamaiWebUrl  string
 	SensorData    string
 	PixelData     string
+	PixelVersion  string
 	ContainsPixel bool
 }
 
@@ -30,12 +31,11 @@ type akamaiRequest struct {
 }
 
 type pixelRequest struct {
-	ApiKey       string `json:"apiKey"`
-	Ua           string `json:"ua"`
-	PageURL      string `json:"pageUrl"`
-	ScriptVal    string `json:"scriptVal"`
-	PixelID      string `json:"pixelId"`
-	PixelVersion string `json:"pixelVersion"`
+	ApiKey    string `json:"apiKey"`
+	Ua        string `json:"ua"`
+	PageURL   string `json:"pageUrl"`
+	ScriptVal string `json:"scriptVal"`
+	PixelID   string `json:"pixelId"`
 }
 
 type AkamaiResponse struct {

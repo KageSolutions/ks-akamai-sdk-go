@@ -50,7 +50,7 @@ func (p *AkamaiSdkInstance) UpdatePixelId(pixelId string) {
 }
 
 func (p *AkamaiSdkInstance) UpdatePixelVersion(pixelVersion string) {
-	p.pixelRequest.PixelVersion = pixelVersion
+	p.PixelVersion = pixelVersion
 }
 
 func structToReader(data interface{}) (io.Reader, error) {
