@@ -12,7 +12,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/KakashiHatake324/mockjs"
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -122,7 +121,6 @@ func (a *AkamaiSdkInstance) DestructureCookie(Abck string) [][]interface{} {
 }
 
 func (t *AkamaiSdkInstance) ParseAkamaiBody(body string) error {
-	t.UpdateScript(mockjs.Window.Btoa(body))
 	webUrl, err := url.Parse(t.WebsiteUrl)
 	if err != nil {
 		return err

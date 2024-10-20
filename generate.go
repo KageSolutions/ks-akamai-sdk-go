@@ -6,10 +6,13 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+
+	"github.com/KakashiHatake324/mockjs"
 )
 
 // request akamai dynamic data
-func (r *AkamaiSdkInstance) RequestDynamic() error {
+func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
+	r.UpdateScript(mockjs.Window.Btoa(script))
 	requestData, err := structToReader(r.dynamicRequest)
 	if err != nil {
 		return err
@@ -37,7 +40,7 @@ func (r *AkamaiSdkInstance) RequestDynamic() error {
 		return err
 	}
 	if _, ok := responseData["success"]; !ok {
-		return errors.New("could not successfully generate akamai dynamic data")
+		return errors.New("could not successfully generate akamai dynamic data, success not in body")
 	}
 	if !responseData["success"].(bool) {
 		return errors.New("could not successfully generate akamai dynamic data")
