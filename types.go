@@ -8,6 +8,8 @@ type AkamaiSdkInstance struct {
 
 	WebsiteUrl    string
 	AkamaiWebUrl  string
+	SensorData    string
+	PixelData     string
 	ContainsPixel bool
 }
 

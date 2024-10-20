@@ -80,6 +80,7 @@ func (r *AkamaiSdkInstance) RequestSensor() (*AkamaiResponse, error) {
 	}
 	// set the first sensor as false since it wont be the first anymore
 	r.sensorRequest.First = false
+	r.SensorData = responseData.Data
 	return &responseData, err
 }
 
@@ -114,5 +115,6 @@ func (r *AkamaiSdkInstance) RequestPixel() (*AkamaiResponse, error) {
 	if !responseData.Success {
 		return nil, errors.New("could not successfully generate akamai pixel")
 	}
+	r.PixelData = responseData.Data
 	return &responseData, err
 }
