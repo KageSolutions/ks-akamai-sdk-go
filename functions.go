@@ -16,7 +16,7 @@ import (
 )
 
 // init new sdk instance
-func NewPxSdkInstance(apiKey, version, website string, firstFeature, verbose bool) *AkamaiSdkInstance {
+func NewAkSdkInstance(apiKey, version, website string, firstFeature, verbose bool) *AkamaiSdkInstance {
 	return &AkamaiSdkInstance{
 		akamaiVersion:  version,
 		dynamicRequest: dynamicRequest{ApiKey: apiKey},
