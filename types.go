@@ -5,6 +5,8 @@ type AkamaiSdkInstance struct {
 	dynamicRequest dynamicRequest
 	sensorRequest  akamaiRequest
 	pixelRequest   pixelRequest
+	apiSensorUrl   string
+	apiDynamicUrl  string
 
 	WebsiteUrl    string
 	AkamaiWebUrl  string

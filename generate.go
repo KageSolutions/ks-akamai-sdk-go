@@ -24,7 +24,7 @@ func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 	if r.verbose {
 		log.Println("DYNAMIC REQUEST DATA:", r.dynamicRequest)
 	}
-	req, err := http.NewRequest("POST", fmt.Sprintf("%s/v%s", DynamicApiUrl, r.akamaiVersion), requestData)
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/v%s", r.apiDynamicUrl, r.akamaiVersion), requestData)
 	if err != nil {
 		return err
 	}
@@ -69,7 +69,7 @@ func (r *AkamaiSdkInstance) RequestSensor() (*AkamaiResponse, error) {
 	if r.verbose {
 		log.Println("SENSOR REQUEST DATA:", r.sensorRequest)
 	}
-	req, err := http.NewRequest("POST", fmt.Sprintf("%s/sensor/v%s", ApiUrl, r.akamaiVersion), requestData)
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/sensor/v%s", r.apiSensorUrl, r.akamaiVersion), requestData)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +112,7 @@ func (r *AkamaiSdkInstance) RequestPixel() (*AkamaiResponse, error) {
 	if r.verbose {
 		log.Println("PIXEL REQUEST DATA:", r.pixelRequest)
 	}
-	req, err := http.NewRequest("POST", fmt.Sprintf("%s/pixel", ApiUrl), requestData)
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/pixel", r.apiSensorUrl), requestData)
 	if err != nil {
 		return nil, err
 	}
