@@ -12,3 +12,14 @@ func (t *AkamaiSdkInstance) GenerateSensor(max int, postReq func() error) error 
 	}
 	return nil
 }
+
+func (t *AkamaiSdkInstance) HandlePixel(postReq func() error) error {
+	if _, err := t.RequestPixel(); err != nil {
+		return err
+	}
+
+	if err := postReq(); err != nil {
+		return err
+	}
+	return nil
+}
