@@ -1,7 +1,13 @@
 package ksakamaisdkgo
 
-func (t *AkamaiSdkInstance) GenerateSensor(max int, postReq func() error) error {
+func (t *AkamaiSdkInstance) GenerateSensor(max int, postReq, updateCookies func() error) error {
 	for l := 0; l < max; l++ {
+		if updateCookies != nil {
+			if err := updateCookies(); err != nil {
+				return err
+			}
+
+		}
 		if _, err := t.RequestSensor(); err != nil {
 			return err
 		}
