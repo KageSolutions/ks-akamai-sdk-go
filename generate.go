@@ -1,6 +1,8 @@
 package ksakamaisdkgo
 
 import (
+	"bytes"
+	"compress/gzip"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -13,7 +15,8 @@ import (
 
 // request akamai dynamic data
 func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
-	r.UpdateScript(mockjs.Window.Btoa(script))
+	compressed, _ := GzipEncodeHTML(script)
+	r.UpdateScript(compressed)
 	requestData, err := structToReader(r.dynamicRequest)
 	if err != nil {
 		return err
@@ -139,4 +142,19 @@ func (r *AkamaiSdkInstance) RequestPixel() (*AkamaiResponse, error) {
 	}
 	r.PixelData = responseData.Data
 	return &responseData, err
+}
+
+func GzipEncodeHTML(html string) (string, error) {
+	var buf bytes.Buffer
+	gz := gzip.NewWriter(&buf)
+
+	if _, err := gz.Write([]byte(html)); err != nil {
+		return "", err
+	}
+
+	if err := gz.Close(); err != nil {
+		return "", err
+	}
+
+	return mockjs.Window.Btoa(string(buf.Bytes())), nil
 }
