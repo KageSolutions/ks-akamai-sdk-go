@@ -38,6 +38,10 @@ func (p *AkamaiSdkInstance) UpdatePageUrl(pageURL string) {
 	p.pixelRequest.PageURL = pageURL
 }
 
+func (p *AkamaiSdkInstance) UpdateForceMact(should bool) {
+	p.sensorRequest.ForceMact = should
+}
+
 func (p *AkamaiSdkInstance) UpdateUserAgent(userAgent string) {
 	p.sensorRequest.Ua = userAgent
 	p.pixelRequest.Ua = userAgent

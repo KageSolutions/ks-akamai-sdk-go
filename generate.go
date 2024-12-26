@@ -15,7 +15,7 @@ import (
 
 // request akamai dynamic data
 func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
-	compressed, _ := GzipEncodeHTML(script)
+	compressed, _ := gzipEncodeHTML(script)
 	r.UpdateScript(compressed)
 	requestData, err := structToReader(r.dynamicRequest)
 	if err != nil {
@@ -144,7 +144,7 @@ func (r *AkamaiSdkInstance) RequestPixel() (*AkamaiResponse, error) {
 	return &responseData, err
 }
 
-func GzipEncodeHTML(html string) (string, error) {
+func gzipEncodeHTML(html string) (string, error) {
 	var buf bytes.Buffer
 	gz := gzip.NewWriter(&buf)
 
