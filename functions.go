@@ -33,6 +33,19 @@ func (p *AkamaiSdkInstance) UpdateScript(script string) {
 	p.dynamicRequest.Script = script
 }
 
+func (p *AkamaiSdkInstance) DisableMact() {
+	p.sensorRequest.DisableMact = true
+}
+
+func (p *AkamaiSdkInstance) EnableMact() {
+	p.sensorRequest.DisableMact = false
+}
+
+func (p *AkamaiSdkInstance) ForceMact() {
+	p.sensorRequest.ForceMact = true
+	p.sensorRequest.DisableMact = false
+}
+
 func (p *AkamaiSdkInstance) UpdatePageUrl(pageURL string) {
 	p.sensorRequest.PageURL = pageURL
 	p.pixelRequest.PageURL = pageURL
