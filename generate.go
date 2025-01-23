@@ -9,6 +9,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/KakashiHatake324/mockjs"
 )
@@ -99,7 +100,11 @@ func (r *AkamaiSdkInstance) RequestSensor() (*AkamaiResponse, error) {
 	}
 	// set the first sensor as false since it wont be the first anymore
 	r.sensorRequest.First = false
-	r.SensorData = responseData.Data
+	if r.forceZero {
+		r.SensorData = responseData.Data
+	} else {
+		r.SensorData = strings.ReplaceAll(responseData.Data, ";0;1;2048;", ";0;1;0;")
+	}
 	return &responseData, err
 }
 

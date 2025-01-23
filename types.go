@@ -14,6 +14,7 @@ type AkamaiSdkInstance struct {
 	PixelData     string
 	PixelVersion  string
 	ContainsPixel bool
+	forceZero     bool
 	verbose       bool
 }
 
