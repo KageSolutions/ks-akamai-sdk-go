@@ -101,9 +101,9 @@ func (r *AkamaiSdkInstance) RequestSensor() (*AkamaiResponse, error) {
 	// set the first sensor as false since it wont be the first anymore
 	r.sensorRequest.First = false
 	if r.forceZero {
-		r.SensorData = responseData.Data
-	} else {
 		r.SensorData = strings.ReplaceAll(responseData.Data, ";0;1;2048;", ";0;1;0;")
+	} else {
+		r.SensorData = responseData.Data
 	}
 	return &responseData, err
 }
