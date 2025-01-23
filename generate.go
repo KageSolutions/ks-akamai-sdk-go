@@ -156,5 +156,5 @@ func gzipEncodeHTML(html string) (string, error) {
 		return "", err
 	}
 
-	return mockjs.Window.Btoa(string(buf.Bytes())), nil
+	return mockjs.InitWindow().Btoa(string(buf.Bytes())), nil
 }

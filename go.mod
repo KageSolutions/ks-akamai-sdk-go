@@ -5,7 +5,7 @@ go 1.23
 toolchain go1.23.2
 
 require (
-	github.com/KakashiHatake324/mockjs v0.0.0-20240910182429-093f110d6172
+	github.com/KakashiHatake324/mockjs v0.0.0-20241108195848-d3f53c51db6c
 	github.com/PuerkitoBio/goquery v1.10.0
 )
 

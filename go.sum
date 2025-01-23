@@ -1,5 +1,7 @@
 github.com/KakashiHatake324/mockjs v0.0.0-20240910182429-093f110d6172 h1:Mh7OxxUS6Beb7RnSDY/Rq2Kwt3xxkXNXxYFbVpsKiLA=
 github.com/KakashiHatake324/mockjs v0.0.0-20240910182429-093f110d6172/go.mod h1:AJiUkM5nOj0E/uZ+MYalpXoCvguQhVGtXp8GExQE2tg=
+github.com/KakashiHatake324/mockjs v0.0.0-20241108195848-d3f53c51db6c h1:L0FZP33X0RY0yJyusePFnB2DsyC45zPYqBkDQOVBWvw=
+github.com/KakashiHatake324/mockjs v0.0.0-20241108195848-d3f53c51db6c/go.mod h1:AJiUkM5nOj0E/uZ+MYalpXoCvguQhVGtXp8GExQE2tg=
 github.com/PuerkitoBio/goquery v1.10.0 h1:6fiXdLuUvYs2OJSvNRqlNPoBm6YABE226xrbavY5Wv4=
 github.com/PuerkitoBio/goquery v1.10.0/go.mod h1:TjZZl68Q3eGHNBA8CWaxAN7rOU1EbDz3CWuolcO5Yu4=
 github.com/andybalholm/cascadia v1.3.2 h1:3Xi6Dw5lHF15JtdcmAHD3i1+T8plmv7BQ/nsViSLyss=
