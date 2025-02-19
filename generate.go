@@ -105,6 +105,7 @@ func (r *AkamaiSdkInstance) RequestSensor() (*AkamaiResponse, error) {
 	} else {
 		r.SensorData = responseData.Data
 	}
+	r.sensorRequest.Sequence++
 	return &responseData, err
 }
 

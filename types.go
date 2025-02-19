@@ -32,6 +32,7 @@ type akamaiRequest struct {
 	First       bool                   `json:"first"`
 	ForceMact   bool                   `json:"forceMact"`
 	DisableMact bool                   `json:"disableMact"`
+	Sequence    int                    `json:"sequence"`
 	DynamicData map[string]interface{} `json:"dynamic,omitempty"`
 }
 
