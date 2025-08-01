@@ -18,7 +18,7 @@ import (
 func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 	compressed, _ := gzipEncodeHTML(script)
 	r.UpdateScript(compressed)
-	requestData, err := structToReader(r.dynamicRequest)
+	requestData, err := structToReader(script)
 	if err != nil {
 		return err
 	}
@@ -30,7 +30,7 @@ func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 		return err
 	}
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Content-Type", "text/html")
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -57,7 +57,7 @@ func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 		return errors.New("could not successfully generate akamai dynamic data")
 	}
 	// set the first sensor as false since it wont be the first anymore
-	r.sensorRequest.DynamicData = responseData["data"].(map[string]interface{})
+	r.dynamicData = responseData["data"].(string)
 	return err
 }
 
@@ -76,6 +76,9 @@ func (r *AkamaiSdkInstance) RequestSensor() (*AkamaiResponse, error) {
 	}
 	req.Header.Add("Accept", "application/json")
 	req.Header.Add("Content-Type", "application/json")
+	if r.dynamicData != "" {
+		req.Header.Add("Dynamic", r.dynamicData)
+	}
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {

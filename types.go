@@ -13,6 +13,7 @@ type AkamaiSdkInstance struct {
 	SensorData    string
 	PixelData     string
 	PixelVersion  string
+	dynamicData   string
 	ContainsPixel bool
 	forceZero     bool
 	verbose       bool
@@ -24,16 +25,15 @@ type dynamicRequest struct {
 }
 
 type akamaiRequest struct {
-	ApiKey      string                 `json:"apiKey"`
-	Ua          string                 `json:"ua"`
-	PageURL     string                 `json:"pageUrl"`
-	Abck        string                 `json:"_abck"`
-	BmSz        string                 `json:"bm_sz"`
-	First       bool                   `json:"first"`
-	ForceMact   bool                   `json:"forceMact"`
-	DisableMact bool                   `json:"disableMact"`
-	Sequence    int                    `json:"sequence"`
-	DynamicData map[string]interface{} `json:"dynamic,omitempty"`
+	ApiKey      string `json:"apiKey"`
+	Ua          string `json:"ua"`
+	PageURL     string `json:"pageUrl"`
+	Abck        string `json:"_abck"`
+	BmSz        string `json:"bm_sz"`
+	First       bool   `json:"first"`
+	ForceMact   bool   `json:"forceMact"`
+	DisableMact bool   `json:"disableMact"`
+	Sequence    int    `json:"sequence"`
 }
 
 type pixelRequest struct {
