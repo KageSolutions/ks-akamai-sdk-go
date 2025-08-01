@@ -18,14 +18,10 @@ import (
 func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 	compressed, _ := gzipEncodeHTML(script)
 	r.UpdateScript(compressed)
-	requestData, err := structToReader(script)
-	if err != nil {
-		return err
-	}
 	if r.verbose {
 		log.Println("DYNAMIC REQUEST DATA:", r.dynamicRequest)
 	}
-	req, err := http.NewRequest("POST", fmt.Sprintf("%s/extract", r.apiSensorUrl), requestData)
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/extract", r.apiSensorUrl), strings.NewReader(compressed))
 	if err != nil {
 		return err
 	}
