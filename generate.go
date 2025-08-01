@@ -26,7 +26,7 @@ func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 		return err
 	}
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Content-Type", "text/html")
+	req.Header.Add("Content-Type", "text/plain")
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
