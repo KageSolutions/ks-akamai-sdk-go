@@ -25,7 +25,7 @@ func (r *AkamaiSdkInstance) RequestDynamic(script string) error {
 	if r.verbose {
 		log.Println("DYNAMIC REQUEST DATA:", r.dynamicRequest)
 	}
-	req, err := http.NewRequest("POST", fmt.Sprintf("%s/v%s", r.apiDynamicUrl, r.akamaiVersion), requestData)
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/extract", r.apiSensorUrl), requestData)
 	if err != nil {
 		return err
 	}

@@ -16,11 +16,10 @@ import (
 )
 
 // init new sdk instance
-func NewAkSdkInstance(apiKey, version, website, sensorUrl, dynamicUrl string, firstFeature, verbose, forceZero bool) *AkamaiSdkInstance {
+func NewAkSdkInstance(apiKey, version, website, sensorUrl string, firstFeature, verbose, forceZero bool) *AkamaiSdkInstance {
 	return &AkamaiSdkInstance{
 		akamaiVersion:  version,
 		apiSensorUrl:   sensorUrl,
-		apiDynamicUrl:  dynamicUrl,
 		dynamicRequest: dynamicRequest{ApiKey: apiKey},
 		sensorRequest:  akamaiRequest{ApiKey: apiKey, First: firstFeature},
 		pixelRequest:   pixelRequest{ApiKey: apiKey},
